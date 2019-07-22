@@ -153,7 +153,7 @@ EOF;
 		$str .= $this->createbeamBagNameInput();
 		$str .= $this->createbeamBagPriceInput();
 		$str .= $this->createUploadButton();
-
+		$str .= $this->formEnd();
 		return $str;
 	}
 
@@ -162,7 +162,7 @@ EOF;
 		$str .= $this->createFileProfilePicInput();
 		$str .= $this->createUploadButton();
 
-		return $str;
+		return $str;	
 	}
 
 	private function createBeambagFileInput() {
