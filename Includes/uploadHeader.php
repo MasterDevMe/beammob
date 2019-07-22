@@ -43,8 +43,8 @@ $artistLogged = Artist::getLoggedIn()
 
             <div class="rightIcons">
                 <?php echo $_SESSION['userLoggedIn']; ?>
-                <a href="uploadArtistPic.php">
-                    <img class="upload" src="assets/images/profile-pics/default.png">
+                <a href="#">
+                    <img class="upload" src="<?php echo file_exists($_SESSION['photo_path'])? $_SESSION['photo_path'] : 'assets/images/profile-pics/default.png'?>">
                 </a>
             </div>
 

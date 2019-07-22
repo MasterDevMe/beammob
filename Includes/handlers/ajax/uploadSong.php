@@ -142,11 +142,13 @@ switch($action) {
 				"id" => Artist::getLoggedIn()->getId()
 			]);
 			
-			if( $data->rowCount() )
+			if( $data->rowCount() ) {
+				$_SESSION['photo_path'] = $profilePhoto['profilePhotoFile'];
 				echo json_encode([
 					'status' => 'done',
 					'title' => $profilePhoto['profilePhotoFile']
 				]);
+			}
 			else
 				echo json_encode([
 					'msg' => $database->error(),

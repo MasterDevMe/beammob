@@ -18,7 +18,7 @@ public function login($aun, $apw) {
 			$query = mysqli_query($this->con, "SELECT * FROM artists WHERE name='$aun' AND artistPassword='$apw'");
 
 			if(mysqli_num_rows($query) == 1) {
-				return true;
+				return mysqli_fetch_row($query);
 			}
 			else {
 				array_push($this->errorArray, Constants::$loginFailed);
