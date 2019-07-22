@@ -11,6 +11,7 @@ require_once("includes/classes/MusicDetailsSongFormProvider.php");
 		<a class="nav-item nav-link active" id="nav-song-tab" data-toggle="tab" href="#nav-song" role="tab" aria-controls="nav-upSong" aria-selected="true">Song</a>
 		<a class="nav-item nav-link" id="nav-album-tab" data-toggle="tab" href="#nav-album" role="tab" aria-controls="nav-upAlbum" aria-selected="false">Album or EP</a>
 		<a class="nav-item nav-link" id="nav-beambag-tab" data-toggle="tab" href="#nav-beambag" role="tab" aria-controls="nav-upBeamBags" aria-selected="false">Beambags</a>
+		<a class="nav-item nav-link" id="nav-profilepic-tab" data-toggle="tab" href="#nav-profilepic" role="tab" aria-controls="nav-upProfilePic" aria-selected="false">Profile Photo</a>
 	  </div>
 	</nav>
 	<div class="tab-content" id="nav-tabContent">
@@ -35,6 +36,14 @@ require_once("includes/classes/MusicDetailsSongFormProvider.php");
 				<?php
 				$formProvider = new MusicDetailsSongFormProvider();
 				echo $formProvider->beambagFrm();
+				?>
+			</div>
+		</div>
+		<div class="tab-pane fade" id="nav-profilepic" role="tabpanel" aria-labelledby="nav-upProfilePic">
+			<div class="py-3">
+				<?php
+				$formProvider = new MusicDetailsSongFormProvider();
+				echo $formProvider->profilePicFrm();
 				?>
 			</div>
 		</div>

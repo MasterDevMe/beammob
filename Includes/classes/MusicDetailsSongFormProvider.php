@@ -157,6 +157,14 @@ EOF;
 		return $str;
 	}
 
+	public function profilePicFrm() {
+		$str  = $this->formHeader(array('profilePicUpload'));
+		$str .= $this->createFileProfilePicInput();
+		$str .= $this->createUploadButton();
+
+		return $str;
+	}
+
 	private function createBeambagFileInput() {
 		return <<<EOF
 		<div class="input-group mb-3">
@@ -272,6 +280,20 @@ EOF;
 
 		return $html;
 
+	}
+
+	private function createFileProfilePicInput() {
+		return <<<EOF
+		<div class="input-group mb-3">
+			<div class="input-group-prepend">
+				<div class="input-group-text"><span class="oi oi-camera-slr"></span>&nbsp;Profile photo file</div>
+			</div>
+			<div class="custom-file">
+				<input type="file" class="custom-file-input photo-validation" name='profilePhotoFile' required>
+				<label class="custom-file-label">Choose file</label>
+			</div>
+		</div>
+EOF;
 	}
 
 	private function createUploadButton($visible = true) {
