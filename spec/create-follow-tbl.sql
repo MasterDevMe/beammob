@@ -1,0 +1,8 @@
+CREATE TABLE `follow` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`userID` INT(11) NOT NULL DEFAULT '0',
+	`followUID` INT(11) NOT NULL DEFAULT '0',
+	PRIMARY KEY (`id`),
+	UNIQUE INDEX `id` (`id`)
+)
+ENGINE=InnoDB;
