@@ -125,5 +125,33 @@ switch($action) {
 				]);
 		}
 		break;
+	case 'uploadProfilePic':
+		$profilePhoto = array(
+
+			'profilePhotoFile' => $_FILES['profilePhotoFile'],
+		);
+		
+		$file = uploadProfilePhotoFile();
+		
+		if( isset($file['filename']) ) {
+			$profilePhoto['profilePhotoFile'] = 'uploads/artist-pic/' . $file['filename'];
+			
+			$data = $database->update('artists', [
+				'artistPic'  => $profilePhoto['profilePhotoFile'],
+			], [
+				"id" => Artist::getLoggedIn()->getId()
+			]);
+			
+			if( $data->rowCount() )
+				echo json_encode([
+					'status' => 'done',
+					'title' => $profilePhoto['profilePhotoFile']
+				]);
+			else
+				echo json_encode([
+					'msg' => $database->error(),
+				]);
+		}
+		break;
 }
 ?>

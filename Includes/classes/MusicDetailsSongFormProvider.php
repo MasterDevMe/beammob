@@ -289,7 +289,7 @@ EOF;
 				<div class="input-group-text"><span class="oi oi-camera-slr"></span>&nbsp;Profile photo file</div>
 			</div>
 			<div class="custom-file">
-				<input type="file" class="custom-file-input photo-validation" name='profilePhotoFile' required>
+				<input type="file" class="custom-file-input photo-validation" name='profilePhotoFile' name='fileInput' required>
 				<label class="custom-file-label">Choose file</label>
 			</div>
 		</div>
