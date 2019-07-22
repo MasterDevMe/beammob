@@ -458,7 +458,7 @@ var currentTab = 'nav-song-tab';
 							if (null != val) this.my.remove();
 							
 							jQuery.delay(100, function() {
-								$('#songUpload > h5 >.badge.badge-secondary').html(numberSongs());
+								$('.songUpload ~ h5 >.badge.badge-secondary').html(numberSongs());
 							});
 						},
 						events:"click.my"
