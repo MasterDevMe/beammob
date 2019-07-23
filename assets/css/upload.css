@@ -43,10 +43,13 @@ a:hover {
     box-sizing: border-box;
     border: none;
     background-color: transparent;
+    border-radius: 20px;
 }
 
 #mastHeadContainer .rightIcons {
     margin-left: 80px;
+    display: flex;
+    align-items: center;
 }
 
 

@@ -7,8 +7,9 @@ if(isset($_POST['artistLoginButton'])) {
 
 	$result = $artistAccount->login($artistUsername, $artistPassword);
 
-	if($result == true) {
+	if($result) {
 		$_SESSION['userLoggedIn'] = $artistUsername;
+		$_SESSION['photo_path'] = $result[7];
 		header("Location: uploadSong.php");
 	}
 

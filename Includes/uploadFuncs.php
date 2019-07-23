@@ -156,3 +156,47 @@ function uploadBeambagFile() {
 	
 	return false;
 }
+
+function uploadProfilePhotoFile() {
+
+	$validator = new FileUpload\Validator\Simple('20M', ['image/jpeg', 'image/pjpeg', 'image/png']);
+	$pathResolver = new FileUpload\PathResolver\Simple('../../../uploads/artist-pic');
+	$fileSystem = new FileUpload\FileSystem\Simple();
+	$fileUpload = new FileUpload\FileUpload($_FILES['profilePhotoFile'], $_SERVER);
+	$fileNameGenerator = new FileUpload\FileNameGenerator\Random(16);
+
+	$fileUpload->setFileNameGenerator($fileNameGenerator);
+	$fileUpload->setPathResolver($pathResolver);
+	$fileUpload->setFileSystem($fileSystem);
+	$fileUpload->addValidator($validator);
+
+	if( $fileUpload->validateAll() ) {
+		// Doing the deed
+		list($files, $headers) = $fileUpload->processAll();
+
+		// Output
+		/*
+		foreach($headers as $header => $value ) {
+			header($header . ': ' . $value);
+		}
+		*/
+
+		// UPLOAD COMPLETED
+		if( $files[0]->completed ) {
+
+			$fname = $files[0]->getFilename();
+			return array(
+				'code' => '200',
+				'filename' => $fname,
+				'done' => true
+			);
+		} else {
+			return array(
+				'code' => $files[0]->errorCode,
+				'msg' => sprintf('%s : %s', $_FILES['profilePhotoFile']['name'], $files[0]->error)
+			);
+		}
+	}
+		
+	return false;
+}

@@ -195,7 +195,7 @@ async function handleUpload() {
 			action = 'uploadBeambag';
 			
 			fd = new FormData(frm);
-			
+
 			if( frm.checkValidity() ) {				
 				processingModal(SHOW);
 				await $.ajax({
@@ -211,6 +211,40 @@ async function handleUpload() {
 						if( data.status == 'done' ) {
 							if( action == 'uploadBeambag' )
 								reloadWithMsg('Created new beambag: ' + data.title);
+							/*
+							let msg = encodeURIComponent('Uploaded beambag file ' + data.fname);
+							redirectTo('uploadSong.php?activeTab=' + action + '&msg=' + msg);
+							*/
+						} else {
+							showErrorMsg(data.msg);
+						}
+					}
+				});
+			}
+			break;
+
+		case 'nav-profilepic-tab':	
+			frm = $('#nav-profilepic.tab-pane form.profilePicUpload')[0];
+			action = 'uploadProfilePic';
+
+			fd = new FormData(frm);
+
+			if( frm.checkValidity() ) {				
+				processingModal(SHOW);
+				await $.ajax({
+					url: 'Includes/handlers/ajax/uploadSong.php?action=' + action,
+					data: fd,
+					processData: false,
+					contentType: false,
+					dataType: 'json',
+					type: 'POST',
+					success: function(data) {					
+						// Completed
+						processingModal(HIDE);
+						if( data.status == 'done' ) {
+							if( action == 'uploadProfilePic' )
+								//reloadWithMsg('Created new Profile Photo: ' + data.title);
+								reloadWithMsg('Created new Profile Photo');
 							/*
 							let msg = encodeURIComponent('Uploaded beambag file ' + data.fname);
 							redirectTo('uploadSong.php?activeTab=' + action + '&msg=' + msg);
@@ -297,7 +331,7 @@ var currentTab = 'nav-song-tab';
 			if (this.checkValidity() === false) {
 				event.preventDefault();
 				event.stopPropagation();
-			}
+			} 
 			
 			handleUpload();
 			
