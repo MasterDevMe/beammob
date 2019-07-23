@@ -43,7 +43,7 @@ $artistLogged = Artist::getLoggedIn()
 
             <div class="rightIcons">
                 <?php echo $_SESSION['userLoggedIn']; ?>
-                <a href="#">
+                <a onclick="$('#nav-tab a:nth-child(5)').tab('show')">
                     <img class="upload" src="<?php echo file_exists($_SESSION['photo_path'])? $_SESSION['photo_path'] : 'assets/images/profile-pics/default.png'?>">
                 </a>
             </div>
